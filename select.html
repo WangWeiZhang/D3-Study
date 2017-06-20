@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择元素</title>
+	<script type="text/javascript" src="js/d3.js"></script>
+</head>
+<body>
+	<section>
+		
+	</section>
+	<script type="text/javascript">
+		//传统方式创建div节点 添加到页面
+		/*
+		var div = document.createElement("div");
+		div.innerHTML = " Hello World!!! ";
+		document.body.appendChild(div);
+		*/
+		
+		// d3的方式创建 添加 
+		var body = d3.select("body");
+		var div = body.append("div");
+		div.html(" Hello World!!! ");
+		var section = d3.select("section");
+		var div = section.append("div");
+		div.html("你是谁");
+	</script>
+</body>
+</html>

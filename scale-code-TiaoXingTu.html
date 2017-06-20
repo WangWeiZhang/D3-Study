@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>比例缩放slace编写条形图</title>
+	<style>
+		.chart div{ height:25px; border-radius:10px; padding-left:20px; background:#f00; color:#fff; border-top:1px solid #fff; }
+	</style>
+	<script type="text/javascript" src="js/d3.js"></script>
+</head>
+<body>
+	<div class="chart">我是条形图</div>
+	<script type="text/javascript">
+		var div=d3.select(".chart").selectAll("div");   //获取.chart下的 所有的div元素
+		var dataset=[15,18,16,18,19,100,35,85,120,128]	//设置绑定的数据，也就是条形图的数据
+		var update=div.data(dataset);					//将数据提前绑定包获取到的 div上， 也就是data返回的第一个函数 update
+		var scale = d3.scale.linear();					//设置线性比例缩放，也就是设置一套比例，传入参数按照比例返回结果集。
+		scale.domain([0,d3.max(dataset)]).range([0,400]);// 设定一组比例  其中domain是作用域，为0--条形图数据的最大值，range是值域
+														// 为0-400，也就是说无论传递过来的数据为多大，成百上千，最后返回的值域，也不会超过400，弥补了 
+														//页面中没有那么高或者那么宽的区域，这回就能在一块内按比例缩放了
+		
+		update.enter().append("div")					//使用enter().append()添加div  因为页面没有chart中没有div
+		.style("width" , function( data ){				//设置添加的div的 宽度 也就是条形图的具体到哪， 这个宽度条用scale()f方法传入一个参数， 
+														//然后调用，最终按照比例返回一个结果， 对应每个数据都会返回一个 成比例的结果。 形成条形图
+			return scale(data) + "px";
+		})
+		.text(function(data){
+			return data + "万";								//将页面添加的条形图元素上面 显示其数据
+		})
+
+	</script>
+</body>
+</html>

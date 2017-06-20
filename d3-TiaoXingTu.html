@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拆分链式写法.达到清晰易于修改的效果</title>
+	<style>
+		.chart div {
+		  font: 10px sans-serif;
+		  background-color:steelblue;
+		  text-align: right;
+		  padding: 3px;
+		  margin: 1px;
+		  color: white;
+		}
+	</style>
+	<script type="text/javascript" src="js/d3.js"></script>	
+</head>
+<body>
+	<div class="chart"></div>
+	<script type="text/javascript">
+		
+		// 第一个条形图
+		// d3.select(".chart").selectAll("div")
+		//    .data([6,5,8,9,10,25])
+		//    .enter().append("div")
+		//    .style("width",function(data){
+		//    	return data * 10 + "px" ;
+		//    })
+		//    .text(function(data){
+		//    		return data;
+		//    })
+		// 第二个 没有链式操作的条形图
+		var chart = d3.select(".chart");
+		var chart_div = chart.selectAll();
+		var update=chart_div.data([4,8,15,16,23,42]);
+		update.enter().append("div").style("width",function(data){
+			return data * 10 + "px";
+		})
+		.text(function(data,index){
+			return data;
+		})
+
+		//第三个条形图
+		
+		// var chart = d3.select(".chart");
+		// var chart_div1 = chart.selectAll("div");
+		// var update = chart_div1.data([12,13,15,16,11,18,10]);
+		// update.enter().append("div").style("width",function(data){
+		// 	return data * 10 +"px";
+		// })
+		// .text(function( data , index ){
+		// 	return data;
+		// })
+		// 
+		// 获取的元素.data([1,23,4,5,4,5,4,5,4,5,4])  意思是将数据集绑定(预先加入)到选择中
+		
+	</script>
+</body>
+</html>

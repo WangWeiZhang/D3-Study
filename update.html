@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>update更新数据绑定</title>
+	<script type="text/javascript" src="js/d3.js"></script>
+	<style>
+		p{ background:#000; color:#fff; text-align: center;}
+	</style>
+</head>
+<body>
+	
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<p>1</p>
+	<script type="text/javascript">
+		/*
+		d3.select("body")
+		  .selectAll("p")
+		  .data([1,2,4,5,7,8,63,8])
+		  .text(function(data,index){
+		  	return "我是update更新绑定的数据 "+data;
+		  })
+		*/
+	
+		var p=d3.select("body").selectAll("p").data([12,13,14,15,16,17,18,19]);
+		p.text(function(data,index){
+			return data;
+		});  //update
+		p.enter().append("p").text(function(data,index){
+			return data;
+		});  //enter
+		p.exit().remove();
+			 //exit
+			 //
+		
+	</script>
+</body>
+</html>

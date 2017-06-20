@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hsl颜色范围 包括（色调、饱和度-%、亮度-%）</title>
+	<script type="text/javascript" src="js/d3.js"></script>
+</head>
+<body>
+	<p>p1</p>
+	<p>p2</p>
+	<p>p3</p>
+	<p>p4</p>
+	<script type="text/javascript">
+	d3.selectAll("p").style("background-color", function(){
+		return "hsl("+ Math.random() * 360 +",100%,50%)";
+	})
+	</script>
+</body>
+</html>

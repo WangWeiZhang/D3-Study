@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>制作柱形图</title>
+	<script type="text/javascript" src="js/d3.js"></script>
+	<style>
+
+.chart div {
+  font: 10px sans-serif;
+  background-color:steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
+</head>
+<body>
+	<div class="chart">
+	  <div style="width: 40px;">4</div>
+	  <div style="width: 80px;">8</div>
+	  <div style="width: 150px;">15</div>
+	  <div style="width: 160px;">16</div>
+	  <div style="width: 230px;">23</div>
+	  <div style="width: 420px;">42</div>
+	</div>
+
+	<script type="text/javascript">
+	d3.select(".chart").style("background-color","#f00").style("width","600px");
+	</script>
+</body>
+</html>

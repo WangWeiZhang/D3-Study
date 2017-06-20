@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3隔行变色</title>
+	<script type="text/javascript" src="js/d3.js"></script>
+</head>
+<body>
+	<p>p1</p>
+	<p>p2</p>
+	<p>p3</p>
+	<p>p4</p>
+	<p>p5</p>
+	<p>p6</p>
+	<p>p7</p>
+	<script type="text/javascript">
+		//动态的创建隔行变色 是偶数行的 为绿色 是奇数行的 为蓝色 下标从1开始
+		d3.selectAll("p").style("background-color",function(data, index){
+			return index % 2 ? "#0f0" : "#00f";
+		})
+		// 动态的通过数据 让页面里的标签的 字体大小 改变 
+		d3.selectAll("p").data([12,16,20,24,28,32,36]).style("font-size",function(data,index){
+			return data+"px";
+		})
+
+	</script>
+</body>
+</html>

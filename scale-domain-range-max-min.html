@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>深入了解数据绑定</title>
+<meta charset="utf-8">
+<script type="text/javascript" src="js/d3.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	
+	/* 
+	var dataset = [1,12,15,15,14,16,1,85,45,46];
+	var resultMax = d3.max(dataset);
+	var resultMin = d3.min(dataset);
+	alert("我是数组中的最大值 "+resultMax);
+	alert("我是数组中的最小值 "+resultMin);
+	*/
+
+	/*找出二维数组中 最大值 和 最小值 
+	var dataset = [[30,20],[25,36],[65,58],[24,55]];
+	var resultMax = d3.max(dataset , function( data ){
+		return data[0];
+	})
+	var resultMin = d3.min(dataset , function( data ){
+		return data[0];
+	})
+	alert(resultMax +" "+resultMin);
+	*/
+
+	// var scale = d3.scale.linear();  
+	// scale.domain([0,20])  
+	//      .range([0,100]);                  
+	// var result = scale(2); 
+	// alert(result);
+	// 
+	
+	//我们所说的 的 scale其实就是一个 比例尺
+	// 其中domain就是我们传参进去之后定义的范围也就是（定义域）
+	// 其中range 就是我们传参进去之后对应的值域，值域和定义域会有一个比例尺形成对应关系，定义域每增加1 则结果集在此基础上增加多少就是结果集。需要按照比例尺（定义域和值域）
+	var scale = d3.scale.linear();  
+	scale.domain([0,20,40])  
+	     .range([0,100,150]);                  
+	var result = scale(35);  
+	alert(result);
+	//以上实例中比例尺的计算范围就是
+	/*domain
+		如果传入的值在0-20之间那么遵循的定义域就是【0-20】 遵循的值域就是【0-100】。那么比例尺的计算方式为：100-0/20-0=5； 也就是定义域和值域的比例为 1 : 5 
+	当我们传入的值是10的时候就是1/5=10/?  那么问号就是50。 注意其中定义域的取值个数必须保持与值域的取值个数一直， 比如 传入20时直接返回对应结果集100
+	如果传入40时候直接返回对应结果集150。
+	*/
+	/*range
+		如果传入的值在20-40之间那么遵循的定义域就是【20-40】遵循的值域也就是【100-150】。 那么比例尺的计算方式为：150-100/40-20 =
+	2.5；也就是定义域20-40和值域100-150这段区间的比例为1 : 2.5；也就是定义域在20的基础上每增加1，那么值域在100的基础上就每次增加2.5。注意是在100的基础上。  
+	比如 传入30的时候，30在20-40这个定义域之间，所以遵循这段比例尺是，计算方式为100 +（30-20）* 2.5 = 125； 如果传入的是35的话  那就是100+（35-20）* 2.5=137.5
+	*/
+	</script>
+</body>
+</html>
