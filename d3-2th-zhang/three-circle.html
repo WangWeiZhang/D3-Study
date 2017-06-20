@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG制作三个小圆点</title>
+	<script type="text/javascript" src="../js/d3.js"></script>
+</head>
+<body>
+	<svg style="width:720px; height:120px; border:1px solid #000;">
+		<circle cx="40" cy="60" r="10"></circle>
+		<circle cx="80" cy="60" r="10"></circle>	
+		<circle cx="120" cy="60" r="10"></circle>
+	</svg>	
+	<script type="text/javascript">
+		var circle=d3.selectAll("circle")
+			circle.style("fill","steelblue")
+			circle.attr("r" , 30)
+			circle.style("stroke","#f00")
+			circle.style("stroke-width","2px");
+			circle.attr("cx", function() { return Math.random() * 720; });
+
+			
+	</script>
+</body>
+</html>

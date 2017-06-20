@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>有四个数据，然后页面没有足够的标记</title>
+</head>
+<body>
+	<svg width="720" height="120">
+	  <circle cx="40" cy="60" r="10"></circle>
+	  <circle cx="80" cy="60" r="10"></circle>
+	  <circle cx="120" cy="60" r="10"></circle>
+	</svg>	
+	<script type="text/javascript" src="../js/d3.js"></script>
+	<script type="text/javascript">
+	// var svg=d3.select("svg");
+	// var circle = svg.selectAll("circle");
+	// var circleEnter=circle.data([32, 57, 112, 293]).enter().append("circle");
+	// 	circleEnter.attr("cx",function( data,index ){
+	// 	  		return index * 100 +30;
+	// 	  })
+	// 	circleEnter.attr("r",function(data){
+	// 	  		return Math.sqrt(data);
+	// 	  })
+	// 	circleEnter.attr("cy",60);
+
+		var svg = d3.select("svg");
+
+		var circle = svg.selectAll("circle")
+		var update=circle.data([32, 57, 112, 293]);
+
+		var circleEnter = update.enter().append("circle");
+
+		circleEnter.attr("cx", function(d, i) { return i * 100 + 30; });
+		circleEnter.attr("cy", 60);
+		circleEnter.attr("r", function(d) { return Math.sqrt(d); });
+	</script>
+
+</body>
+</html>
