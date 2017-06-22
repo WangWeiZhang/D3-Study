@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>d3选择器-选中的分组元素真正的意义</title>
+		<script type="text/javascript" src='../js/d3.js'></script>
+		
+	</head>
+	<body>
+		<!--d3中 简单的二维数组的概念  会出现在选择器中-->
+		<!--d3.select 选择一个单个元素 并不像 JavaScript中 直接针对操作的是 dom对象
+			在d3中，通过d3.select（“body”）选择的元素，无论是单个的还是多个的 其直接
+			作用的是 group组 而选择的操作对象是存放在group 组中的 一个dom节点对象，也就是说
+			我们d3中这样编写是 元素数组的数组， 每一个选择是一group数组，每一个group又都是一个元素数组
+			例如： var selection = d3.select("body");
+			console.log(selection[0]) //显示 [body,parentNode:html] group中有一个body 和 body的父亲
+			console.log(selection[0][0])// 这样返回的 <body>...</body> z找到了dom元素
+		-->
+		<!--
+		    //d3.selectALl() 选择一组元素 也就是 selection->group-> element1\2\3\4等
+		    <div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<script type="text/javascript">
+				var a = d3.selectAll("div");
+		        console.log(a[0]);    //返回的是一个数组 这个数组中 有三个div （也就是group组）
+		        console.log(a[0][0]); //返回的是第一个div单个元素 因为它是group组中的一个元素  是一个二维数组
+			</script>
+		-->
+		
+		
+		<script type="text/javascript">
+		var document_data =	document.body.__data__ = 42;
+		console.log("将文档元素绑定了数据：" + document_data);
+		
+		//新添加的p继承了 绑定在body下的数据 42
+		var document_data1 = d3.select("body").datum(42).append("p");
+		console.log(document_data1); // 返回 一个 group 数组  数组中有两个 dom对象 一个是p  一个是 html （parentNode:html）
+		console.log(document_data1[0]); //返回一个数组[p,parentNode:html]
+		console.log(document_data1[0][0]);// 返回的就是 一个 p元素 <p></p>  
+		//从上面的数组中展开 查看p元素所包含的属性，你会发现 d3中有一个 __data__属性 继承了body所绑定的42
+		console.log("p元素继承了body绑定的数据："+document_data1[0][0].__data__);
+		</script>
+	</body>
+		    
+		
+		
+</html>
