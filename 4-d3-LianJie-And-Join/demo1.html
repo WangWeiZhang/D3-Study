@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>enter、update、exit结合 transition 进行动画特效的展示</title>
+		<script type="text/javascript" src="../js/d3.js"></script>
+	</head>
+	<body>
+		<svg style="width:1000px; height:600px; border:1px solid #000;"></svg>
+		<script type="text/javascript">
+			var svg = d3.select("svg");
+			var circle=svg.selectAll("circle");
+			var dataset=[100,200,300,400,500,600,700,800];
+			var update=circle.data(dataset);
+			update.enter().append("circle")
+				  .attr("cx",function(data,index){
+				  	return data;
+				  })
+				  .attr("cy",100)
+			      .attr("r", 0)
+			  	  .transition()
+			      .attr("r", 50)
+			      .transition()
+			      .attr("r", 40)
+			      .transition()
+			      .attr("r", 60)
+			      .transition()
+			      .attr("r", 30)
+			      .transition()
+			      .attr("r", 70)
+			      .transition()
+			      .attr("r", 20)
+			      .transition()
+			      .attr("r", 80)
+			      .transition()
+			      .attr("r", 10);
+			      
+			//transition()，这个方法在d3里封装成了 函数，可以直接调用，形成的是过渡效果稍后还会学习
+		</script>
+	</body>
+</html>

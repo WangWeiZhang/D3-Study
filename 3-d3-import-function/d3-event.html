@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>event</title>
+		<script type="text/javascript" src="../js/d3.js"></script>
+	</head>
+	<body>
+		<div id="box">ss</div>
+		
+		<script type="text/javascript">
+			var div = d3.select("#box");
+//			div.on("click.fn1" , function(){
+//				alert(this.innerHTML);
+//			}).on("click.fn2",function(){
+//				alert("第二个时间")
+//			})
+			/*on(type,listener())
+				1、为元素绑定事件selection.on(type-事件类型, listener-事件监听函数)
+				2、获取/移除当前监听函数: selection.on(type-事件类型 ， null)
+				3、d3为元素绑定多个事件: selection.on("click.fn1" , function(){alert(1)})
+								  selection.on("click.fn2" , function(){alert(2)})
+				       这种方式就是在，绑定事件的时候，增加一个 命名空间，为每个不同的命名空间分配不同的 事件监听函数
+			*/
+			div.on("mouseout",function(){
+				alert(d3.event)
+				alert(d3.mouse(this))
+				
+			})
+			/*-d3.mouse(container(dom元素))-----on(type,listener(){d3.mouse(this)})
+				1、获取元素触发事件的 坐标位置   eg：selection.on("click",fn(){ alert(d3.mouse(this)) })  
+			*/
+			/*-d3.event 指的是触发的事件是 什么类型  比如 mouseover 是 object Mouse event
+			 
+			 * */
+			
+		</script>
+	</body>
+</html>
